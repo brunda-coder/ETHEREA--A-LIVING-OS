@@ -54,7 +54,7 @@ Etherea reached the deployment phase but encountered hosting configuration issue
 
 ---
 
-## COLLABORTORS 
+## 🤝 COLLABORTORS 
 - BRUNDA G
 - CHANDRAMMA
 - ARSHIYA KHANUM
