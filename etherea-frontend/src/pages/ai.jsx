@@ -1,35 +1,48 @@
 import React, { useState } from "react";
+import "./AI.css";
 
-export default function AiWidget() {
+function AI() {
   const [input, setInput] = useState("");
-  const [response, setResponse] = useState("");
+  const [messages, setMessages] = useState([]);
 
-  function handleSend() {
+  const sendMessage = () => {
     if (!input.trim()) return;
-    setResponse("✨ AI response coming soon...");
-  }
+
+    const newMessage = { sender: "user", text: input };
+    setMessages([...messages, newMessage]);
+    setInput("");
+
+    // Temporary AI reply (you can replace later)
+    setTimeout(() => {
+      setMessages((prev) => [
+        ...prev,
+        { sender: "ai", text: "This is Etherea AI responding!" },
+      ]);
+    }, 600);
+  };
 
   return (
-    <div style={{ padding: "20px" }}>
-      <h1>AI Widget 🤖</h1>
+    <div className="ai-container">
+      <h1>Etherea AI</h1>
 
-      <input
-        type="text"
-        placeholder="Ask something..."
-        value={input}
-        onChange={(e) => setInput(e.target.value)}
-        style={{ padding: "10px", width: "60%" }}
-      />
+      <div className="chat-box">
+        {messages.map((msg, i) => (
+          <p key={i} className={msg.sender === "user" ? "user-msg" : "ai-msg"}>
+            {msg.text}
+          </p>
+        ))}
+      </div>
 
-      <button
-        onClick={handleSend}
-        style={{ padding: "10px 20px", marginLeft: "10px" }}
-      >
-        Send
-      </button>
-
-      <p style={{ marginTop: "20px" }}>{response}</p>
+      <div className="input-row">
+        <input
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Type message..."
+        />
+        <button onClick={sendMessage}>Send</button>
+      </div>
     </div>
   );
 }
 
+export default AI;
