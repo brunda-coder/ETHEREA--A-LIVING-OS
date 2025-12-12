@@ -1,18 +1,16 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from "react";
+import Sidebar from "./components/Sidebar.jsx";
+import AI from "./components/AI.jsx";
 
-import Dashboard from "./pages/dashboard.jsx";
-import AiWidget from "./pages/ai.jsx"; 
-// Add more pages later
+import "./App.css";
 
-export default function App() {
+function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/ai" element={<AiWidget />} />
-        {/* Add more routes here */}
-      </Routes>
-    </BrowserRouter>
+    <div className="app-container">
+      <Sidebar />
+      <AI />
+    </div>
   );
 }
+
+export default App;
